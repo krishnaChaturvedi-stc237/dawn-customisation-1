@@ -1,0 +1,44 @@
+<div class="collectionlist-wrapper-{{ section.id }}">
+   <h2>{{ section.settings.text }}</h2>
+
+   <div id="collectionlist-div-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.collection != blank -%}
+          <img src="{{ block.settings.collection.image | image_url: 'medium' }}" height="300" width="150">
+        {%- endif -%}
+      {%- endfor -%}
+   </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection List",
+  "tag": "section",
+  "class": "collection-list",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Collection Header"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection Item",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection List Custom"
+    }
+  ]
+}
+{% endschema %}
