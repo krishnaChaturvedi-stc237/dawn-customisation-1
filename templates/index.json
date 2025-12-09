@@ -121,6 +121,31 @@
     },
     "collection_list_custom_AXn3X4": {
       "type": "collection-list-custom",
+      "blocks": {
+        "collection_Wq4dN6": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "collection_CDmxnt": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "collection_a3N4gh": {
+          "type": "collection",
+          "settings": {
+            "collection": "trousers-pants-copy"
+          }
+        }
+      },
+      "block_order": [
+        "collection_Wq4dN6",
+        "collection_CDmxnt",
+        "collection_a3N4gh"
+      ],
       "name": "Collection List Custom",
       "settings": {
         "text": ""
