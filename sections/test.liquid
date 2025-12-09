@@ -1,0 +1,47 @@
+<div>{{ section.settings.footer_linklist_title }}</div>
+<div class="lsdkjfdksl">
+    {% for block in section.blocks %}
+        <div>
+            {{ block.settings.abc }}
+            <img src="{{ block.settings.imag1 | image_url }}">
+        </div>
+    {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "Test",
+  "tag": "section",
+  "class": "section section-featured-product",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_linklist_title",
+      "label": "Heading",
+      "default": "Quick links"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "block",
+        "name": "image",
+        "settings": [
+            {
+                "type": "text",
+                "id": "abc",
+                "label": "text"
+            },
+            {
+                "type": "image_picker",
+                "id": "imag1",
+                "label": "text"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "test something",
+    }
+  ]
+}
+{% endschema %}
