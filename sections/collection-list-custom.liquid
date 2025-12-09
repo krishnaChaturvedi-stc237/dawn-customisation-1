@@ -1,14 +1,75 @@
 <div class="collectionlist-wrapper-{{ section.id }}">
-   <h2>{{ section.settings.text }}</h2>
+  <h2 class="collectionlist__heading">{{ section.settings.text }}</h2>
 
-   <div id="collectionlist-div-{{ section.id }}">
-      {%- for block in section.blocks -%}
-        {%- if block.settings.collection != blank -%}
-          <img src="{{ block.settings.collection.image | image_url: 'medium' }}" height="300" width="150">
-        {%- endif -%}
-      {%- endfor -%}
-   </div>
+  <div class="collectionlist__grid">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.collection != blank -%}
+        <div class="collectionlist__item {% if forloop.first %}collectionlist__item--first{% elsif forloop.last %}collectionlist__item--last{% endif %}">
+          <div class="collectionlist__image-wrapper">
+            {{ block.settings.collection.featured_image
+              | image_url: width: 300, height: 400
+              | image_tag: alt: block.settings.collection.title
+            }}
+          </div>
+          <p class="collectionlist__title">{{ block.settings.collection.title }}</p>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
 </div>
+
+<style>
+  /* Scoped Section CSS */
+  .collectionlist-wrapper-{{ section.id }} {
+    padding: 40px 0;
+  }
+
+  .collectionlist-wrapper-{{ section.id }} .collectionlist__heading {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  .collectionlist-wrapper-{{ section.id }} .collectionlist__grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+  }
+
+  .collectionlist-wrapper-{{ section.id }} .collectionlist__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .collectionlist-wrapper-{{ section.id }} .collectionlist__image-wrapper img {
+    width: 220px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .collectionlist-wrapper-{{ section.id }} .collectionlist__item--first img {
+    border-top-left-radius: 40px;
+  }
+
+  .collectionlist-wrapper-{{ section.id }} .collectionlist__item--last img {
+    border-bottom-right-radius: 40px;
+  }
+
+  .collectionlist-wrapper-{{ section.id }} .collectionlist__item img:hover {
+    transform: scale(1.05);
+  }
+
+  .collectionlist-wrapper-{{ section.id }} .collectionlist__title {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+  }
+</style>
 
 {% schema %}
 {
@@ -32,9 +93,10 @@
           "id": "collection",
           "label": "Select Collection"
         }
-      ]
+      ],
     }
   ],
+  "max_blocks":4,
   "presets": [
     {
       "name": "Collection List Custom"
