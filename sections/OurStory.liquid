@@ -1,0 +1,541 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .our-story-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+
+  .our-story-{{ section.id }}__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    gap: 3.2rem;
+    align-items: center;
+  }
+
+  .our-story-{{ section.id }}__video {
+    position: relative;
+  }
+
+  .our-story-{{ section.id }}__video .video-section__media {
+    max-height: {{ section.settings.video_max_height | default: 460 }}px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .our-story-{{ section.id }}__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  .our-story-{{ section.id }}__heading {
+    margin: 0 0 1.2rem;
+  }
+
+  .our-story-{{ section.id }}__text {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .our-story-{{ section.id }}__button-wrapper {
+    margin-top: 0.8rem;
+  }
+
+  .our-story-{{ section.id }}__slider-wrapper {
+    margin-top: 0.8rem;
+  }
+
+  .our-story-{{ section.id }}__slider {
+    position: relative;
+    padding: 0 3.6rem; /* space for arrows */
+  }
+
+  .our-story-{{ section.id }}__slider-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.6rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .our-story-{{ section.id }}__slider-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .our-story-{{ section.id }}__slide {
+    flex: 0 0 100%;
+    max-width: 220px;
+    margin-inline: auto;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 0.5rem;
+    scroll-snap-align: center;
+  }
+
+  .our-story-{{ section.id }}__slide-icon {
+    flex: 0 0 auto;
+    margin-bottom: 0.4rem;
+  }
+
+  .our-story-{{ section.id }}__slide-title {
+    margin: 0 0 0.4rem;
+    font-weight: 600;
+  }
+
+  .our-story-{{ section.id }}__slide-text {
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+
+  .our-story-{{ section.id }} .slider-buttons {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .our-story-{{ section.id }} .slider-button {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: #ffffff;
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    border: none;
+  }
+
+  .our-story-{{ section.id }}__bottom {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.4rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 2.4rem;
+  }
+
+  .our-story-{{ section.id }}__bottom-item {
+    text-align: center;
+  }
+
+  .our-story-{{ section.id }}__bottom-icon {
+    margin-bottom: 0.8rem;
+  }
+
+  .our-story-{{ section.id }}__bottom-title {
+    margin: 0 0 0.4rem;
+    font-weight: 600;
+  }
+
+  .our-story-{{ section.id }}__bottom-text {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  @media screen and (max-width: 989px) {
+    .our-story-{{ section.id }}__top {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .our-story-{{ section.id }}__bottom {
+      grid-template-columns: minmax(0, 1fr);
+      text-align: left;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign video_id = section.settings.video.id | default: section.settings.video_url.id
+  assign video_alt = section.settings.video.alt | default: section.settings.video_description
+  assign video_poster = section.settings.video.preview_image | default: section.settings.cover_image
+  assign video_alt_text = 'sections.video.load_video' | t: description: video_alt | escape
+-%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding isolate">
+    <div class="our-story-{{ section.id }}">
+      <div class="our-story-{{ section.id }}__top">
+        <div class="our-story-{{ section.id }}__video">
+          <deferred-media
+            class="video-section__media deferred-media gradient global-media-settings"
+            data-media-id="{{ video_id }}"
+            {% if video_poster != null %}
+              style="--ratio-percent: {{ 1 | divided_by: video_poster.aspect_ratio | times: 100 }}%;"
+            {% endif %}
+          >
+            <button
+              id="Deferred-Poster-Modal-{{ video_id }}-our-story-{{ section.id }}"
+              class="video-section__poster media deferred-media__poster media--landscape"
+              type="button"
+              aria-label="{{ video_alt_text }}"
+            >
+              {%- if video_poster != null -%}
+                {{
+                  video_poster
+                  | image_url: width: 1600
+                  | image_tag: sizes: '(min-width: 750px) 50vw, 100vw', widths: '375, 750, 1100, 1500, 1600', alt: video_alt_text
+                }}
+              {%- else -%}
+                {{ 'hero-apparel-3' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+              {%- endif -%}
+              <span class="deferred-media__poster-button motion-reduce">
+                <span class="svg-wrapper">
+                  {{- 'icon-play.svg' | inline_asset_content -}}
+                </span>
+              </span>
+            </button>
+            <template>
+              {%- if section.settings.video == null and section.settings.video_url != null -%}
+                {%- liquid
+                  assign loop = ''
+                  if section.settings.enable_video_looping
+                    assign loop = '&loop=1&playlist=' | append: video_id
+                  endif
+                -%}
+                {%- if section.settings.video_url.type == 'youtube' -%}
+                  <iframe
+                    src="https://www.youtube.com/embed/{{ video_id }}?enablejsapi=1&autoplay=1{{ loop }}"
+                    class="js-youtube"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen
+                    title="{{ section.settings.video_description | escape }}"
+                  ></iframe>
+                {%- else -%}
+                  <iframe
+                    src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1{{ loop }}"
+                    class="js-vimeo"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen
+                    title="{{ section.settings.video_description | escape }}"
+                  ></iframe>
+                {%- endif -%}
+              {%- else -%}
+                {{
+                  section.settings.video
+                  | video_tag:
+                    image_size: '1100x',
+                    autoplay: true,
+                    loop: section.settings.enable_video_looping,
+                    controls: true,
+                    muted: false
+                }}
+              {%- endif -%}
+            </template>
+          </deferred-media>
+        </div>
+
+        <div class="our-story-{{ section.id }}__content">
+          <div>
+            {%- if section.settings.heading != blank -%}
+              <h2 class="our-story-{{ section.id }}__heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+            {%- endif -%}
+            {%- if section.settings.text != blank -%}
+              <div class="our-story-{{ section.id }}__text rte">{{ section.settings.text }}</div>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.button_label != blank -%}
+            <div class="our-story-{{ section.id }}__button-wrapper">
+              <a
+                class="button button--primary"
+                {% if section.settings.button_link == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ section.settings.button_link }}"
+                {% endif %}
+              >
+                {{ section.settings.button_label }}
+              </a>
+            </div>
+          {%- endif -%}
+
+          {%- assign highlight_blocks = section.blocks | where: 'type', 'highlight' -%}
+          {%- if highlight_blocks.size > 0 -%}
+            <div class="our-story-{{ section.id }}__slider-wrapper">
+              <slider-component class="our-story-{{ section.id }}__slider slider-mobile-gutter">
+                <ul
+                  id="Slider-OurStory-{{ section.id }}"
+                  class="our-story-{{ section.id }}__slider-list slider slider--everywhere"
+                  role="list"
+                >
+                  {%- for block in highlight_blocks -%}
+                    <li
+                      id="Slide-OurStory-{{ section.id }}-{{ forloop.index }}"
+                      class="our-story-{{ section.id }}__slide slider__slide"
+                      {{ block.shopify_attributes }}
+                    >
+                      {%- if block.settings.icon != blank -%}
+                        <div class="our-story-{{ section.id }}__slide-icon">
+                          {{
+                            block.settings.icon
+                            | image_url: width: 40
+                            | image_tag: loading: 'lazy', widths: '40,60,80'
+                          }}
+                        </div>
+                      {%- endif -%}
+                      <div>
+                        {%- if block.settings.title != blank -%}
+                          <h3 class="our-story-{{ section.id }}__slide-title">{{ block.settings.title }}</h3>
+                        {%- endif -%}
+                        {%- if block.settings.text != blank -%}
+                          <p class="our-story-{{ section.id }}__slide-text">{{ block.settings.text }}</p>
+                        {%- endif -%}
+                      </div>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+
+                {%- if highlight_blocks.size > 1 -%}
+                  <div class="slider-buttons">
+                    <button
+                      type="button"
+                      class="slider-button slider-button--prev"
+                      name="previous"
+                      aria-label="{{ 'general.slider.previous_slide' | t }}"
+                      aria-controls="Slider-OurStory-{{ section.id }}"
+                    >
+                      <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="slider-button slider-button--next"
+                      name="next"
+                      aria-label="{{ 'general.slider.next_slide' | t }}"
+                      aria-controls="Slider-OurStory-{{ section.id }}"
+                    >
+                      <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+                    </button>
+                  </div>
+                {%- endif -%}
+              </slider-component>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- assign bottom_blocks = section.blocks | where: 'type', 'bottom_icon' -%}
+      {%- if bottom_blocks.size > 0 -%}
+        <div class="our-story-{{ section.id }}__bottom">
+          {%- for block in bottom_blocks -%}
+            <div class="our-story-{{ section.id }}__bottom-item" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <div class="our-story-{{ section.id }}__bottom-icon">
+                  {{
+                    block.settings.icon
+                    | image_url: width: 40
+                    | image_tag: loading: 'lazy', widths: '40,60,80'
+                  }}
+                </div>
+              {%- endif -%}
+              {%- if block.settings.title != blank -%}
+                <p class="our-story-{{ section.id }}__bottom-title">{{ block.settings.title }}</p>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <p class="our-story-{{ section.id }}__bottom-text">{{ block.settings.text }}</p>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our story",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Know Our Story"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Use this section to tell customers about your brand story, values and what makes you unique.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Read more"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video file"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["youtube", "vimeo"],
+      "label": "External video URL",
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Poster image"
+    },
+    {
+      "type": "text",
+      "id": "video_description",
+      "label": "Video description (for accessibility)",
+      "default": "Brand story video"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "Loop video",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "video_max_height",
+      "min": 240,
+      "max": 700,
+      "step": 20,
+      "unit": "px",
+      "label": "Video max height",
+      "default": 460
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Slider card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Quality"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Describe one of your key brand pillars, such as quality, sustainability or innovation."
+        }
+      ]
+    },
+    {
+      "type": "bottom_icon",
+      "name": "Bottom icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Discreet Packaging"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description",
+          "default": "Short reassuring message about this benefit."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Our story",
+      "blocks": [
+        { "type": "highlight" },
+        { "type": "highlight" },
+        { "type": "highlight" },
+        { "type": "bottom_icon" },
+        { "type": "bottom_icon" },
+        { "type": "bottom_icon" }
+      ]
+    }
+  ]
+}
+{% endschema %}
