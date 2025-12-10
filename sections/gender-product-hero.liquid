@@ -4,23 +4,39 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 
-{%- if section.settings.background_image != blank -%}
-  {% assign img = section.settings.background_image %}
-  {% assign ratio = img.width | divided_by: img.height %}
-{%- endif -%}
+{% assign img = section.settings.background_image %}
+{% assign ratio = img.width | divided_by: img.height %}
 
 {%- style -%}
-  .gender-hero-{{ section.id }}__bg {
-    background-size: cover;
-    background-position: left;
-    aspect-ratio: {{ ratio }}; /* dynamic height */
-    width: 100%; 
-  }
     .gender-hero-{{ section.id }} {
       position: relative;
       color: #ffffff;
       overflow: hidden;
       border-radius: 16px;
+    }
+
+    /* .gender-hero-{{ section.id }}::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: #cdee2bff;
+      opacity: 0.25;
+      z-index: 1;
+    } */
+
+   .gender-hero-{{ section.id }}__bg {
+      background-size: cover;
+      background-position: left;
+      aspect-ratio: {{ ratio }}; /* dynamic height */
+      width: 100%;
+    }
+
+    .gender-hero-{{ section.id }}__bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.3);
+      z-index:1;
     }
 
     .gender-hero-{{ section.id }}__content {
@@ -34,6 +50,24 @@
 
     .gender-hero-{{ section.id }}__left {
       max-width: 32rem;
+      margin-left: 40px;
+      margin-bottom: 40px;
+    }
+
+    .gender-hero-{{ section.id }}__eyebrow {
+      margin: 0 0 0.4rem;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+    }
+
+    .gender-hero-{{ section.id }}__headline {
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+      font-size: clamp(3.6rem, 3vw + 1.6rem, 5.4rem);
     }
 
     .gender-hero-{{ section.id }}__right {
@@ -41,14 +75,16 @@
       flex-direction: column;
       align-items: stretch;
       gap: 1.6rem;
+      margin-top: 40px;
     }
 
     .gender-hero-{{ section.id }}__switcher {
       display: inline-flex;
       align-self: flex-end;
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(247, 132, 29, 0.3);
       border-radius: 1.6rem;
-      padding: 1rem;
+      padding: 1.5rem;
+      margin-right:40px
     }
 
     .gender-hero-{{ section.id }}__switcher-button {
@@ -193,15 +229,24 @@
   data-gender-section-id="{{ section.id }}"
   data-default-gender="{{ section.settings.default_gender }}"
 >
-  <div class="gender-hero-{{ section.id }}__bg"
-  style="background-image:url('{{ section.settings.background_image | image_url }}');">
+  <div
+    class="gender-hero-{{ section.id }}__bg"
+    style="background-image:url('{{ section.settings.background_image | image_url }}');"
+  >
     <div class="gender-hero-{{ section.id }}__content">
-      <div class="gender-hero-{{ section.id }}__left"></div>
+      <div class="gender-hero-{{ section.id }}__left">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="gender-hero-{{ section.id }}__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.headline != blank -%}
+          <p class="gender-hero-{{ section.id }}__headline">{{ section.settings.headline }}</p>
+        {%- endif -%}
+      </div>
+
       <div class="gender-hero-{{ section.id }}__right">
         <div
           class="gender-hero-{{ section.id }}__switcher"
           role="tablist"
-          aria-label="{{ 'Gender filter' | t | default: 'Gender filter' }}"
         >
           <button
             type="button"
@@ -299,6 +344,18 @@
       "label": "Background image"
     },
     {
+      "type": "inline_richtext",
+      "id": "eyebrow",
+      "label": "Top text",
+      "default": "Skincare"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "headline",
+      "label": "Main heading",
+      "default": "ESSENTIALS"
+    },
+    {
       "type": "text",
       "id": "men_label",
       "label": "Men tab label",
@@ -352,6 +409,12 @@
           "id": "description",
           "label": "Short description",
           "default": "Radiance Serum"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "Color scheme",
+          "default": "scheme-1"
         }
       ]
     }

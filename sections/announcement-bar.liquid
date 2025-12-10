@@ -104,6 +104,13 @@
                       {%- if block.settings.link != blank -%}
                         {{- 'icon-arrow.svg' | inline_asset_content -}}
                       {%- endif -%}
+                      {% if section.settings.enable_countdown and section.settings.countdown_end != blank %}
+                        <span
+                          class="announcement-timer"
+                          data-countdown-end="{{ section.settings.countdown_end }}"
+                          style="margin-left:10px; font-weight:700;"
+                        ></span>
+                      {% endif %}
                     </p>
                     {%- if block.settings.link != blank -%}
                       </a>
@@ -186,13 +193,13 @@
       "unit": "s",
       "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
       "default": 5
-    },    
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-4"
-    },  
+    },
     {
       "type": "checkbox",
       "id": "show_line_separator",
@@ -205,8 +212,19 @@
     },
     {
       "type": "paragraph",
-         "content": "t:sections.announcement-bar.settings.paragraph.content"
-    },             
+      "content": "t:sections.announcement-bar.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_countdown",
+      "label": "Enable countdown timer",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "countdown_end",
+      "label": "Deal end (in hours)"
+    },
     {
       "type": "checkbox",
       "id": "show_social",
