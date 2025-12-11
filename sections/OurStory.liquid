@@ -378,24 +378,9 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    if (!window.VideoController || !window.VideoController.registerPlayerFromElement){
-      console.log('Returing : not get window.VedioCOntroller')
-      return;
-    }
-
-    var container = document.querySelector(
-      '[data-video-id="our-story-{{ section.id }}"]'
-    );
-    if (!container) return;
-
-    window.VideoController.registerPlayerFromElement(container);
-  });
-
-  // Optional: support Theme Editor dynamic section load
+    // Optional: support Theme Editor dynamic section load
   document.addEventListener('shopify:section:load', function (event) {
     if (!window.VideoController || !window.VideoController.registerPlayerFromElement) {
-      console.log('Returing : not get window.VedioCOntroller')
       return;
     }
     var sectionEl = event.target;
@@ -408,6 +393,19 @@
 
     window.VideoController.registerPlayerFromElement(container);
   });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!window.VideoController || !window.VideoController.registerPlayerFromElement){
+      return;
+    }
+    var container = document.querySelector(
+      '[data-video-id="our-story-{{ section.id }}"]'
+    );
+    if (!container) return;
+    
+    window.VideoController.registerPlayerFromElement(container);
+  });
+
 </script>
 
 {% schema %}

@@ -172,10 +172,21 @@
           else if (src.indexOf('vimeo.com') !== -1) player.type = 'vimeo';
         }
       }
+      // play(id);
 
-      play(id);
+      // 2) For native <video>, listen to play/pause from default controls
+      if (player.videoEl) {
+        player.videoEl.addEventListener('play', function () {
+          play(id); 
+        });
+
+        player.videoEl.addEventListener('pause', function () {
+          if (currentPlayerId === id && !player.videoEl.ended) {
+            currentPlayerId = null;
+          }
+        });
+      }
     });
-
     // For native videos, listen to manual pause
     const nativeVideo = container.querySelector('video');
     if (nativeVideo) {
