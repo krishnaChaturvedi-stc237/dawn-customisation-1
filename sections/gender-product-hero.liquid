@@ -8,231 +8,270 @@
 {% assign ratio = img.width | divided_by: img.height %}
 
 {%- style -%}
-    .gender-hero-{{ section.id }} {
-      position: relative;
-      color: #ffffff;
-      overflow: hidden;
-      border-radius: 16px;
-    }
+  .gender-hero-{{ section.id }} {
+    position: relative;
+    color: #ffffff;
+    overflow: hidden;
+    border-radius: 16px;
+  }
 
-    /* .gender-hero-{{ section.id }}::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-color: #cdee2bff;
-      opacity: 0.25;
-      z-index: 1;
-    } */
+  .gender-hero-{{ section.id }}__bg {
+    background-size: cover;
+    background-position: left;
+    aspect-ratio: {{ ratio }};
+    /* dynamic height */
+    width: 100%;
+  }
 
-   .gender-hero-{{ section.id }}__bg {
-      background-size: cover;
-      background-position: left;
-      aspect-ratio: {{ ratio }}; /* dynamic height */
-      width: 100%;
-    }
+  /* .gender-hero-{{ section.id }}
+  __bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 50;
+  } */
 
-    .gender-hero-{{ section.id }}__bg::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.3);
-      z-index:1;
-    }
+  .gender-hero-{{ section.id }}
+  __content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    gap: 3.2rem;
+    align-items: center;
+  }
 
+  .gender-hero-{{ section.id }}
+  __left {
+    max-width: 32rem;
+    margin-left: 40px;
+    margin-bottom: 40px;
+  }
+
+  .gender-hero-{{ section.id }}
+  __eyebrow {
+    margin: 0 0 0.4rem;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+  }
+
+  .gender-hero-{{ section.id }}
+  __headline {
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+    font-size: clamp(3.6rem, 3vw + 1.6rem, 5.4rem);
+  }
+
+  .gender-hero-{{ section.id }}
+  __right {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.6rem;
+    margin-top: 40px;
+  }
+
+  .gender-hero-{{ section.id }}
+  __switcher {
+    display: inline-flex;
+    align-self: flex-end;
+    background-color: rgba(247, 132, 29, 0.3);
+    border-radius: 1.6rem;
+    padding: 1.5rem;
+    margin-right: 40px
+  }
+
+  .gender-hero-{{ section.id }}
+  __switcher-button {
+    min-width: 7.5rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 1.4rem;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 150ms ease
+    , color 150ms ease
+    , box-shadow 150ms ease
+    , transform 150ms ease;
+  }
+
+  .gender-hero-{{ section.id }}
+  __switcher-button.is-active {
+    background-color: #f8f0e6;
+    color: #b86a2b;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+
+  .gender-hero-{{ section.id }}
+  __products-scroll {
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.4rem;
+  }
+
+  .gender-hero-{{ section.id }}
+  __products-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .gender-hero-{{ section.id }}
+  __products-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .gender-hero-{{ section.id }}
+  __products-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 999px;
+  }
+
+  .gender-hero-{{ section.id }}
+  __products {
+    display: flex;
+    gap: 2.4rem;
+    padding: 0.4rem 0 0.6rem;
+    margin: 0;
+    list-style: none;
+    min-width: 100%;
+  }
+  /* Card background & padding just for this section */
+  .gender-hero-{{ section.id }}__products .card__inner {
+    background-color: whitesmoke;
+    border-radius: 20px;
+    padding: 1rem 1rem 1.4rem;
+  }
+
+  /* Optional outer spacing/border on wrapper */
+  .gender-hero-{{ section.id }}__products .card-wrapper {
+    padding: 0.5rem;
+    border-radius: 22px;
+  }
+
+  /* Heading font styling inside these cards only */
+  .gender-hero-{{ section.id }}__products .card__heading.h5,
+  .gender-hero-{{ section.id }} .card__heading.h5 {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  .gender-hero-{{ section.id }}
+  __product {
+    flex: 0 0 auto;
+    width: 21rem;
+    max-width: 22rem;
+    scroll-snap-align: start;
+  }
+
+  .gender-hero-{{ section.id }}
+  __products-scroll {
+    scroll-snap-type: x mandatory;
+  }
+
+  .gender-hero-{{ section.id }}
+  .card-wrapper {
+    height: 100%;
+    background-color: whitesmoke;
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .gender-hero-{{ section.id }}
+  .card {
+    border-radius: 1.8rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  .gender-hero-{{ section.id }}
+  .card__inner {
+    border-radius: 1.8rem 1.8rem 0 0;
+    overflow: hidden;
+  }
+
+  .gender-hero-{{ section.id }}.card__content:last-child {
+    padding-bottom: 1.8rem;
+  }
+
+  .gender-hero-{{ section.id }}
+  .card-information {
+    margin-top: 0.4rem;
+  }
+
+  .gender-hero-{{ section.id }}
+  .card-information .caption-large {
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .gender-hero-{{ section.id }}
+  .price {
+    font-weight: 700;
+  }
+
+  .gender-hero-{{ section.id }}
+  .quick-add__submit.button {
+    margin-top: 0.8rem;
+    border-radius: 999px;
+    border: 1.5px solid #f09a4b;
+    background: #ffefe3;
+    color: #b75420;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .gender-hero-{{ section.id }}.quick-add__submit.button:hover {
+    background: #f09a4b;
+    color: #ffffff;
+  }
+
+  section[data-gender-section-id="{{ section.id }}"][data-active-gender='men'] [data-gender-block='women'] {
+    display: none;
+  }
+
+  section[data-gender-section-id="{{ section.id }}"][data-active-gender='women'] [data-gender-block='men'] {
+    display: none;
+  }
+
+  @media screen and (max-width: 989px) {
     .gender-hero-{{ section.id }}__content {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 3.2rem;
-      align-items: center;
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 2.4rem;
     }
 
-    .gender-hero-{{ section.id }}__left {
-      max-width: 32rem;
-      margin-left: 40px;
-      margin-bottom: 40px;
+    .gender-hero-{{ section.id }}
+    __left {
+      max-width: none;
     }
 
-    .gender-hero-{{ section.id }}__eyebrow {
-      margin: 0 0 0.4rem;
-      letter-spacing: 0.15em;
-      font-weight: 600;
-      font-size: 1.6rem;
-      text-transform: uppercase;
-    }
-
-    .gender-hero-{{ section.id }}__headline {
-      margin: 0;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      line-height: 1.05;
-      font-size: clamp(3.6rem, 3vw + 1.6rem, 5.4rem);
-    }
-
-    .gender-hero-{{ section.id }}__right {
-      display: flex;
-      flex-direction: column;
+    .gender-hero-{{ section.id }}
+    __right {
       align-items: stretch;
-      gap: 1.6rem;
-      margin-top: 40px;
     }
 
-    .gender-hero-{{ section.id }}__switcher {
-      display: inline-flex;
-      align-self: flex-end;
-      background-color: rgba(247, 132, 29, 0.3);
-      border-radius: 1.6rem;
-      padding: 1.5rem;
-      margin-right:40px
+    .gender-hero-{{ section.id }}
+    __switcher {
+      align-self: flex-start;
     }
-
-    .gender-hero-{{ section.id }}__switcher-button {
-      min-width: 7.5rem;
-      padding: 0.8rem 1.8rem;
-      border-radius: 1.4rem;
-      border: none;
-      background: transparent;
-      color: #ffffff;
-      font-size: 1.4rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
-    }
-
-    .gender-hero-{{ section.id }}__switcher-button.is-active {
-      background-color: #f8f0e6;
-      color: #b86a2b;
-      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
-      transform: translateY(-1px);
-    }
-
-    .gender-hero-{{ section.id }}__products-scroll {
-      position: relative;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 0.4rem;
-    }
-
-    .gender-hero-{{ section.id }}__products-scroll::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .gender-hero-{{ section.id }}__products-scroll::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    .gender-hero-{{ section.id }}__products-scroll::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 999px;
-    }
-
-    .gender-hero-{{ section.id }}__products {
-      display: flex;
-      gap: 2.4rem;
-      padding: 0.4rem 0 0.6rem;
-      margin: 0;
-      list-style: none;
-      min-width: 100%;
-    }
-
-    .gender-hero-{{ section.id }}__product {
-      flex: 0 0 auto;
-      width: 21rem;
-      max-width: 22rem;
-      scroll-snap-align: start;
-    }
-
-    .gender-hero-{{ section.id }}__products-scroll {
-      scroll-snap-type: x mandatory;
-    }
-
-    .gender-hero-{{ section.id }} .card-wrapper {
-      height: 100%;
-    }
-
-    .gender-hero-{{ section.id }} .card {
-      border-radius: 1.8rem;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-    }
-
-    .gender-hero-{{ section.id }} .card__inner {
-      border-radius: 1.8rem 1.8rem 0 0;
-      overflow: hidden;
-    }
-
-    .gender-hero-{{ section.id }} .card__content:last-child {
-      padding-bottom: 1.8rem;
-    }
-
-    .gender-hero-{{ section.id }} .card-information {
-      margin-top: 0.4rem;
-    }
-
-    .gender-hero-{{ section.id }} .card-information .caption-large {
-      display: block;
-      margin-bottom: 0.4rem;
-    }
-
-    .gender-hero-{{ section.id }} .price {
-      font-weight: 700;
-    }
-
-    .gender-hero-{{ section.id }} .quick-add__submit.button {
-      margin-top: 0.8rem;
-      border-radius: 999px;
-      border: 1.5px solid #f09a4b;
-      background: #ffefe3;
-      color: #b75420;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .gender-hero-{{ section.id }} .quick-add__submit.button:hover {
-      background: #f09a4b;
-      color: #ffffff;
-    }
-
-    .gender-hero-{{ section.id }}[data-active-gender='men'] [data-gender='women'] {
-      display: none;
-    }
-
-    .gender-hero-{{ section.id }}[data-active-gender='women'] [data-gender='men'] {
-      display: none;
-    }
-
-    @media screen and (max-width: 989px) {
-      .gender-hero-{{ section.id }}__content {
-        grid-template-columns: minmax(0, 1fr);
-        row-gap: 2.4rem;
-      }
-
-      .gender-hero-{{ section.id }}__left {
-        max-width: none;
-      }
-
-      .gender-hero-{{ section.id }}__right {
-        align-items: stretch;
-      }
-
-      .gender-hero-{{ section.id }}__switcher {
-        align-self: flex-start;
-      }
-    }
+  }
 {%- endstyle -%}
 
 <section
   class="section-{{ section.id }}-padding"
   data-gender-section-id="{{ section.id }}"
-  data-default-gender="{{ section.settings.default_gender }}"
->
-  <div
-    class="gender-hero-{{ section.id }}__bg"
-    style="background-image:url('{{ section.settings.background_image | image_url }}');"
-  >
+  data-default-gender="{{ section.settings.default_gender }}">
+  <div class="gender-hero-{{ section.id }}__bg" style="background-image:url('{{ section.settings.background_image | image_url }}');">
     <div class="gender-hero-{{ section.id }}__content">
       <div class="gender-hero-{{ section.id }}__left">
         {%- if section.settings.eyebrow != blank -%}
@@ -244,18 +283,14 @@
       </div>
 
       <div class="gender-hero-{{ section.id }}__right">
-        <div
-          class="gender-hero-{{ section.id }}__switcher"
-          role="tablist"
-        >
+        <div class="gender-hero-{{ section.id }}__switcher" role="tablist">
           <button
             type="button"
             class="gender-hero-{{ section.id }}__switcher-button is-active"
             data-gender-toggle-button
             data-gender="men"
             role="tab"
-            aria-selected="true"
-          >
+            aria-selected="true">
             {{ section.settings.men_label | default: 'Men' }}
           </button>
           <button
@@ -264,8 +299,7 @@
             data-gender-toggle-button
             data-gender="women"
             role="tab"
-            aria-selected="false"
-          >
+            aria-selected="false">
             {{ section.settings.women_label | default: 'Women' }}
           </button>
         </div>
@@ -274,23 +308,35 @@
           <div class="gender-hero-{{ section.id }}__products-scroll" data-gender-products>
             <ul class="gender-hero-{{ section.id }}__products" role="list">
               {%- assign skip_card_product_styles = false -%}
+              {%- assign active_gender = section.settings.active_gender -%}
               {%- for block in section.blocks -%}
                 {%- assign product = block.settings.product -%}
+                <li>{{ active_gender | "No active gender" }}</li>
+                {%- if active_gender == 'women' and block.settings.gender == 'women' -%}
+                  <li style="color:red;">DEBUG: {{ product.title | default: 'No title' }} (Matched MEN)</li>
+                {%- endif -%}
                 {%- if product != blank -%}
                   <li
                     class="gender-hero-{{ section.id }}__product"
-                    data-gender="{{ block.settings.gender }}"
-                    {{ block.shopify_attributes }}
-                  >
-                    {% render 'card-product',
-                      card_product: product,
-                      media_aspect_ratio: 'portrait',
-                      show_secondary_image: false,
-                      show_vendor: false,
-                      show_rating: false,
-                      skip_styles: skip_card_product_styles,
-                      section_id: section.id,
-                      quick_add: 'standard'
+                    data-gender-block="{{ block.settings.gender }}"
+                    {{ block.shopify_attributes }}>
+                    {% render 'card-product'
+                      ,
+ card_product: product
+                      ,
+ media_aspect_ratio: 'portrait'
+                      ,
+ show_secondary_image: false
+                      ,
+ show_vendor: false
+                      ,
+ show_rating: false
+                      ,
+ skip_styles: skip_card_product_styles
+                      ,
+ section_id: section.id
+                      ,
+ quick_add: 'standard'
                     %}
                     {%- assign skip_card_product_styles = true -%}
                   </li>
@@ -308,10 +354,10 @@
   document.addEventListener('DOMContentLoaded', function () {
     var section = document.querySelector('[data-gender-section-id="{{ section.id }}"]');
     if (!section) return;
-
-    var defaultGender = section.getAttribute('data-default-gender') || 'women';
+  
+    var defaultGender = section.getAttribute('data-default-gender') || 'men';
     var buttons = section.querySelectorAll('[data-gender-toggle-button]');
-
+  
     function setGender(gender) {
       section.setAttribute('data-active-gender', gender);
       buttons.forEach(function (btn) {
@@ -320,9 +366,9 @@
         btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
       });
     }
-
+  
     setGender(defaultGender);
-
+  
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var gender = btn.getAttribute('data-gender');
@@ -333,98 +379,110 @@
 </script>
 
 {% schema %}
-{
-  "name": "Gender product hero",
-  "tag": "section",
-  "class": "section",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Background image"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "eyebrow",
-      "label": "Top text",
-      "default": "Skincare"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "headline",
-      "label": "Main heading",
-      "default": "ESSENTIALS"
-    },
-    {
-      "type": "text",
-      "id": "men_label",
-      "label": "Men tab label",
-      "default": "Men"
-    },
-    {
-      "type": "text",
-      "id": "women_label",
-      "label": "Women tab label",
-      "default": "Women"
-    },
-    {
-      "type": "select",
-      "id": "default_gender",
-      "label": "Default gender",
-      "options": [
-        { "value": "men", "label": "Men" },
-        { "value": "women", "label": "Women" }
-      ],
-      "default": "women"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color scheme",
-      "default": "scheme-1"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "product_card",
-      "name": "Product card",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
-        },
-        {
-          "type": "select",
-          "id": "gender",
-          "label": "Gender",
-          "options": [
-            { "value": "men", "label": "Men" },
-            { "value": "women", "label": "Women" }
-          ],
-          "default": "women"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Short description",
-          "default": "Radiance Serum"
-        },
-        {
-          "type": "color_scheme",
-          "id": "color_scheme",
-          "label": "Color scheme",
-          "default": "scheme-1"
-        }
-      ]
-    }
-  ],
-  "max_blocks": 20,
-  "presets": [
-    {
-      "name": "Gender product hero",
-      "blocks": [{ "type": "product_card" }, { "type": "product_card" }, { "type": "product_card" }]
-    }
-  ]
-}
+  {
+    "name": "Gender product hero",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background image"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "eyebrow",
+        "label": "Top text",
+        "default": "Skincare"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "headline",
+        "label": "Main heading",
+        "default": "ESSENTIALS"
+      },
+      {
+        "type": "text",
+        "id": "men_label",
+        "label": "Men tab label",
+        "default": "Men"
+      }, {
+        "type": "text",
+        "id": "women_label",
+        "label": "Women tab label",
+        "default": "Women"
+      }, {
+        "type": "select",
+        "id": "default_gender",
+        "label": "Default gender",
+        "options": [
+          {
+            "value": "men",
+            "label": "Men"
+          }, {
+            "value": "women",
+            "label": "Women"
+          }
+        ],
+        "default": "men"
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "default": "scheme-1"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product_card",
+        "name": "Product card",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }, {
+            "type": "select",
+            "id": "gender",
+            "label": "Gender",
+            "options": [
+              {
+                "value": "men",
+                "label": "Men"
+              }, {
+                "value": "women",
+                "label": "Women"
+              }
+            ],
+            "default": "women"
+          }, {
+            "type": "text",
+            "id": "description",
+            "label": "Short description",
+            "default": "Radiance Serum"
+          }, {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "Color scheme",
+            "default": "scheme-1"
+          }
+        ]
+      }
+    ],
+    "max_blocks": 20,
+    "presets": [
+      {
+        "name": "Gender product hero",
+        "blocks": [
+          {
+            "type": "product_card"
+          }, {
+            "type": "product_card"
+          }, {
+            "type": "product_card"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}
