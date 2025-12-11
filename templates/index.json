@@ -15,7 +15,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
+            "heading": "Introducing Premium Beauty",
             "heading_size": "h0"
           }
         },
@@ -24,7 +24,7 @@
           "settings": {
             "button_label_1": "Shop all",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
+            "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
@@ -36,102 +36,32 @@
         "button"
       ],
       "settings": {
+        "image": "shopify://shop_images/Muri_Lelu_1.png",
         "image_overlay_opacity": 40,
-        "image_height": "large",
+        "image_height": "medium",
         "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
+        "desktop_content_position": "top-left",
+        "desktop_content_alignment": "left",
         "show_text_box": false,
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-d6dd1fe2-d3e8-450e-b00a-d26b050a9b3d",
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
     },
-    "test_bezzcj": {
-      "type": "test",
-      "blocks": {
-        "block_LFiXtK": {
-          "type": "block",
-          "settings": {
-            "abc": "third",
-            "imag1": "shopify://shop_images/CENTELLA.webp"
-          }
-        },
-        "block_3W9zaQ": {
-          "type": "block",
-          "settings": {
-            "abc": "asdfsadf",
-            "imag1": "shopify://shop_images/CENTELLA.webp"
-          }
-        },
-        "block_JGiwrW": {
-          "type": "block",
-          "settings": {
-            "abc": "second",
-            "imag1": "shopify://shop_images/CENTELLA.webp"
-          }
-        },
-        "block_FtAC6E": {
-          "type": "block",
-          "settings": {
-            "abc": "first",
-            "imag1": "shopify://shop_images/CENTELLA.webp"
-          }
-        }
-      },
-      "block_order": [
-        "block_LFiXtK",
-        "block_3W9zaQ",
-        "block_JGiwrW",
-        "block_FtAC6E"
-      ],
-      "name": "test something",
-      "settings": {
-        "footer_linklist_title": "Quick links"
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
     "collection_list_custom_AXn3X4": {
       "type": "collection-list-custom",
       "blocks": {
+        "collection_jBK97q": {
+          "type": "collection",
+          "settings": {
+            "collection": "new-arrivals"
+          }
+        },
         "collection_Wq4dN6": {
           "type": "collection",
           "settings": {
-            "collection": ""
-          }
-        },
-        "collection_CDmxnt": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
+            "collection": "new-arrivals"
           }
         },
         "collection_a3N4gh": {
@@ -139,23 +69,151 @@
           "settings": {
             "collection": "trousers-pants-copy"
           }
+        },
+        "collection_CDmxnt": {
+          "type": "collection",
+          "settings": {
+            "collection": "new-arrivals"
+          }
         }
       },
       "block_order": [
+        "collection_jBK97q",
         "collection_Wq4dN6",
-        "collection_CDmxnt",
-        "collection_a3N4gh"
+        "collection_a3N4gh",
+        "collection_CDmxnt"
       ],
       "name": "Collection List Custom",
       "settings": {
-        "text": ""
+        "text": "Get Started"
+      }
+    },
+    "gender_product_hero_GFXwAN": {
+      "type": "gender-product-hero",
+      "blocks": {
+        "product_card_rHd4mk": {
+          "type": "product_card",
+          "settings": {
+            "product": "",
+            "gender": "women",
+            "description": "Radiance Serum",
+            "color_scheme": ""
+          }
+        },
+        "product_card_FyNhQq": {
+          "type": "product_card",
+          "settings": {
+            "product": "",
+            "gender": "women",
+            "description": "Radiance Serum",
+            "color_scheme": ""
+          }
+        },
+        "product_card_eJdwiU": {
+          "type": "product_card",
+          "settings": {
+            "product": "",
+            "gender": "women",
+            "description": "Radiance Serum",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_card_rHd4mk",
+        "product_card_FyNhQq",
+        "product_card_eJdwiU"
+      ],
+      "name": "Gender product hero",
+      "settings": {
+        "background_image": "shopify://shop_images/Mask_group_1.png",
+        "eyebrow": "Skincare",
+        "headline": "ESSENTIALS",
+        "men_label": "Men",
+        "women_label": "Women",
+        "default_gender": "women",
+        "color_scheme": ""
+      }
+    },
+    "our_story_gcKCCa": {
+      "type": "OurStory",
+      "blocks": {
+        "highlight_PaAJdH": {
+          "type": "highlight",
+          "settings": {
+            "title": "Quality",
+            "text": "Describe one of your key brand pillars, such as quality, sustainability or innovation."
+          }
+        },
+        "highlight_XBweTE": {
+          "type": "highlight",
+          "settings": {
+            "title": "Quality",
+            "text": "Describe one of your key brand pillars, such as quality, sustainability or innovation."
+          }
+        },
+        "highlight_9xnbbR": {
+          "type": "highlight",
+          "settings": {
+            "title": "Quality",
+            "text": "Describe one of your key brand pillars, such as quality, sustainability or innovation."
+          }
+        },
+        "bottom_icon_34wjqJ": {
+          "type": "bottom_icon",
+          "settings": {
+            "icon": "shopify://shop_images/cube.png",
+            "title": "Discreet Packaging",
+            "text": "Short reassuring message about this benefit."
+          }
+        },
+        "bottom_icon_ycBiDG": {
+          "type": "bottom_icon",
+          "settings": {
+            "icon": "shopify://shop_images/arrow_back_left_icon_123728_1.png",
+            "title": "Discreet Packaging",
+            "text": "Short reassuring message about this benefit."
+          }
+        },
+        "bottom_icon_qERDXB": {
+          "type": "bottom_icon",
+          "settings": {
+            "icon": "shopify://shop_images/secure-payment.png",
+            "title": "Discreet Packaging",
+            "text": "Short reassuring message about this benefit."
+          }
+        }
+      },
+      "block_order": [
+        "highlight_PaAJdH",
+        "highlight_XBweTE",
+        "highlight_9xnbbR",
+        "bottom_icon_34wjqJ",
+        "bottom_icon_ycBiDG",
+        "bottom_icon_qERDXB"
+      ],
+      "name": "Our story",
+      "settings": {
+        "heading": "Know Our Story",
+        "text": "<p>Use this section to tell customers about your brand story, values and what makes you unique.</p>",
+        "button_label": "Read more",
+        "button_link": "shopify://pages/about-us",
+        "video": "shopify://files/videos/0_Christmas_Fireplace_3840x2160.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify://shop_images/image_33.png",
+        "video_description": "Brand story video",
+        "enable_video_looping": false,
+        "video_max_height": 460,
+        "color_scheme": "scheme-2",
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     }
   },
   "order": [
     "image_banner",
-    "test_bezzcj",
-    "featured_collection",
-    "collection_list_custom_AXn3X4"
+    "collection_list_custom_AXn3X4",
+    "gender_product_hero_GFXwAN",
+    "our_story_gcKCCa"
   ]
 }
