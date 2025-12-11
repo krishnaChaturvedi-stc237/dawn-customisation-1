@@ -186,7 +186,11 @@
   <div class="page-width section-{{ section.id }}-padding isolate">
     <div class="our-story-{{ section.id }}">
       <div class="our-story-{{ section.id }}__top">
-        <div class="our-story-{{ section.id }}__video">
+        <div 
+          class="our-story-{{ section.id }}__video"
+          data-video-player
+          data-video-id="our-story-{{ section.id }}"
+        >
           <deferred-media
             class="video-section__media deferred-media gradient global-media-settings"
             data-media-id="{{ video_id }}"
@@ -199,6 +203,7 @@
               class="video-section__poster media deferred-media__poster media--landscape"
               type="button"
               aria-label="{{ video_alt_text }}"
+              data-video-play-button
             >
               {%- if video_poster != null -%}
                 {{
@@ -371,6 +376,39 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!window.VideoController || !window.VideoController.registerPlayerFromElement){
+      console.log('Returing : not get window.VedioCOntroller')
+      return;
+    }
+
+    var container = document.querySelector(
+      '[data-video-id="our-story-{{ section.id }}"]'
+    );
+    if (!container) return;
+
+    window.VideoController.registerPlayerFromElement(container);
+  });
+
+  // Optional: support Theme Editor dynamic section load
+  document.addEventListener('shopify:section:load', function (event) {
+    if (!window.VideoController || !window.VideoController.registerPlayerFromElement) {
+      console.log('Returing : not get window.VedioCOntroller')
+      return;
+    }
+    var sectionEl = event.target;
+    if (!sectionEl) return;
+
+    var container = sectionEl.querySelector(
+      '[data-video-id="our-story-{{ section.id }}"]'
+    );
+    if (!container) return;
+
+    window.VideoController.registerPlayerFromElement(container);
+  });
+</script>
 
 {% schema %}
 {
