@@ -302,6 +302,80 @@
         "padding_top": 40,
         "padding_bottom": 40
       }
+    },
+    "our_story_nWFwyJ": {
+      "type": "OurStory",
+      "blocks": {
+        "highlight_wTxpDK": {
+          "type": "highlight",
+          "settings": {
+            "title": "Quality",
+            "text": "Describe one of your key brand pillars, such as quality, sustainability or innovation."
+          }
+        },
+        "highlight_Xyarpw": {
+          "type": "highlight",
+          "settings": {
+            "title": "Quality",
+            "text": "Describe one of your key brand pillars, such as quality, sustainability or innovation."
+          }
+        },
+        "highlight_ra7Q73": {
+          "type": "highlight",
+          "settings": {
+            "title": "Quality",
+            "text": "Describe one of your key brand pillars, such as quality, sustainability or innovation."
+          }
+        },
+        "bottom_icon_RJpFjk": {
+          "type": "bottom_icon",
+          "settings": {
+            "icon": "shopify://shop_images/cube.png",
+            "title": "Discreet Packaging",
+            "text": "Short reassuring message about this benefit."
+          }
+        },
+        "bottom_icon_T3rE8z": {
+          "type": "bottom_icon",
+          "settings": {
+            "icon": "shopify://shop_images/arrow_back_left_icon_123728_1.png",
+            "title": "Discreet Packaging",
+            "text": "Short reassuring message about this benefit."
+          }
+        },
+        "bottom_icon_cJQAiq": {
+          "type": "bottom_icon",
+          "settings": {
+            "icon": "shopify://shop_images/secure-payment.png",
+            "title": "Discreet Packaging",
+            "text": "Short reassuring message about this benefit."
+          }
+        }
+      },
+      "block_order": [
+        "highlight_wTxpDK",
+        "highlight_Xyarpw",
+        "highlight_ra7Q73",
+        "bottom_icon_RJpFjk",
+        "bottom_icon_T3rE8z",
+        "bottom_icon_cJQAiq"
+      ],
+      "name": "Our story",
+      "settings": {
+        "heading": "Know Our Story",
+        "text": "<p>Use this section to tell customers about your brand story, values and what makes you unique.</p>",
+        "button_label": "Read more",
+        "button_link": "shopify://pages/about-us",
+        "video": "shopify://files/videos/0_Christmas_Fireplace_3840x2160.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify://shop_images/image_33.png",
+        "video_description": "Brand story video",
+        "enable_video_looping": false,
+        "video_max_height": 460,
+        "color_scheme": "scheme-2",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
@@ -309,6 +383,7 @@
     "collection_list_custom_AXn3X4",
     "product_properties_ngR8AK",
     "gender_product_hero_W9eQPf",
-    "our_story_gcKCCa"
+    "our_story_gcKCCa",
+    "our_story_nWFwyJ"
   ]
 }
