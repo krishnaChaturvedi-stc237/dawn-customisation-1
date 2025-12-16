@@ -1,0 +1,90 @@
+.pvs-status {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  opacity: 0.8;
+}
+
+.pvs-products {
+  display: grid;
+  gap: 3rem;
+  margin-top: 2rem;
+
+  /* Make the whole product list vertically scrollable */
+  max-height: var(--pvs-products-max-height, 70vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+  padding-right: 0.5rem;
+}
+
+@media screen and (max-width: 749px) {
+  .pvs-products {
+    max-height: var(--pvs-products-max-height-mobile, 60vh);
+  }
+}
+
+.pvs-product-title {
+  margin: 0 0 1.2rem;
+  font-size: 1.8rem;
+}
+
+.pvs-product-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pvs-product-title a:hover {
+  text-decoration: underline;
+}
+
+.pvs-variants {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pvs-variant-card {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid rgba(var(--color-foreground), 0.1);
+  border-radius: 0.6rem;
+  background: rgb(var(--color-background));
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+}
+
+.pvs-variant-card:hover {
+  border-color: rgba(var(--color-foreground), 0.25);
+}
+
+.pvs-variant-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.pvs-variant-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pvs-variant-image--placeholder {
+  background: rgba(var(--color-foreground), 0.06);
+}
+
+.pvs-variant-title {
+  font-size: 1.4rem;
+  line-height: 1.3;
+}
+
+.pvs-variant-price {
+  font-size: 1.3rem;
+  opacity: 0.85;
+}

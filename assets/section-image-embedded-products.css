@@ -1,0 +1,130 @@
+.image-embedded-products {
+  position: relative;
+}
+
+.image-embedded-products__slides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.image-embedded-products__slide {
+  position: relative;
+}
+
+.image-embedded-products__media {
+  position: relative;
+  width: 100%;
+  /* Fixed height (values come from section inline CSS variables) */
+  height: var(--iep-image-height-mobile, 420px);
+}
+
+@media screen and (min-width: 750px) {
+  .image-embedded-products__media {
+    height: var(--iep-image-height-desktop, 560px);
+  }
+}
+
+/* Avoid Dawn's .media > * positioning rules interfering with our layout */
+.image-embedded-products__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.image-embedded-products__hotspots {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.image-embedded-products__hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 999px;
+  border: 2px solid rgb(var(--color-background));
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.image-embedded-products__hotspot::before {
+  content: '';
+  display: block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.image-embedded-products__hotspot[aria-expanded='true'] {
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.image-embedded-products__product-panel {
+  position: absolute;
+  left: clamp(1.2rem, 2vw, 2.4rem);
+  right: auto;
+  bottom: clamp(1.2rem, 2vw, 2.4rem);
+  z-index: 3;
+  max-width: min(34rem, calc(100% - 2.4rem));
+  /* Let clicks pass through unless a visible card is shown */
+  pointer-events: none;
+}
+
+.image-embedded-products__product-card {
+  pointer-events: auto;
+}
+
+.image-embedded-products__product-card {
+  position: relative;
+  width: min(34rem, calc(100vw - 3rem));
+
+  /* Floating panel styling */
+  padding: 1rem;
+  border-radius: 1.2rem;
+  background: rgba(var(--color-background), 0.92);
+  border: 1px solid rgba(var(--color-foreground), 0.12);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+/* Remove the "double border" look: use panel border instead of card border */
+.image-embedded-products__product-card .card--card,
+.image-embedded-products__product-card .card--standard .card__inner {
+  border: 0;
+}
+
+.image-embedded-products__product-card .card--card:after,
+.image-embedded-products__product-card .card--standard .card__inner:after {
+  box-shadow: none;
+}
+
+.image-embedded-products__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 4;
+  min-width: auto;
+  min-height: auto;
+  padding: 0.6rem;
+  border-radius: 999px;
+  background: rgba(var(--color-background), 0.95);
+  border: 1px solid rgba(var(--color-foreground), 0.12);
+}
+
+.image-embedded-products__product-card .card-wrapper {
+  width: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .image-embedded-products__product-card {
+    width: 34rem;
+  }
+}
