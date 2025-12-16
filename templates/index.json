@@ -376,6 +376,127 @@
         "padding_top": 40,
         "padding_bottom": 40
       }
+    },
+    "products_variants_slider_8z39hG": {
+      "type": "products-variants-slider",
+      "name": "Products → Variant slider (Storefront API)",
+      "settings": {
+        "title": "Products",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "products_scroll_height_desktop": 70,
+        "products_scroll_height_mobile": 60,
+        "padding_bottom": 36
+      }
+    },
+    "image_embedded_products_yHALDH": {
+      "type": "image-embedded-products",
+      "blocks": {
+        "slide_GX6YhT": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/bestsellers_b14be154-cbed-4975-b005-293d12aed4ed_1.png",
+            "spots_count": 3,
+            "spot_1_x": 44,
+            "spot_1_y": 51,
+            "spot_1_product": "4mm-5mm-6mm-y-wrench",
+            "spot_2_x": 31,
+            "spot_2_y": 68,
+            "spot_2_product": "acs-crossfire-headset",
+            "spot_3_x": 20,
+            "spot_3_y": 31,
+            "spot_3_product": "700c-aerospoke",
+            "spot_4_x": 39,
+            "spot_4_y": 88,
+            "spot_4_product": "rossignol-pursuit-200-carbon-xelium-skis-xelium-110-b83-bindings-2016",
+            "spot_5_x": 30,
+            "spot_5_y": 70,
+            "spot_5_product": ""
+          }
+        },
+        "slide_kEjqKX": {
+          "type": "slide",
+          "settings": {
+            "spots_count": 2,
+            "spot_1_x": 50,
+            "spot_1_y": 50,
+            "spot_1_product": "",
+            "spot_2_x": 60,
+            "spot_2_y": 60,
+            "spot_2_product": "",
+            "spot_3_x": 40,
+            "spot_3_y": 40,
+            "spot_3_product": "",
+            "spot_4_x": 70,
+            "spot_4_y": 30,
+            "spot_4_product": "",
+            "spot_5_x": 30,
+            "spot_5_y": 70,
+            "spot_5_product": ""
+          }
+        },
+        "slide_8gbqw9": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Hero_66b66aa2-9967-4141-943d-8b974e654cda.jpg",
+            "spots_count": 1,
+            "spot_1_x": 76,
+            "spot_1_y": 34,
+            "spot_1_product": "rossignol-angus-magtek-snowboard-2016",
+            "spot_2_x": 66,
+            "spot_2_y": 60,
+            "spot_2_product": "",
+            "spot_3_x": 40,
+            "spot_3_y": 40,
+            "spot_3_product": "",
+            "spot_4_x": 70,
+            "spot_4_y": 30,
+            "spot_4_product": "",
+            "spot_5_x": 30,
+            "spot_5_y": 70,
+            "spot_5_product": ""
+          }
+        },
+        "slide_ffGMRr": {
+          "type": "slide",
+          "settings": {
+            "spots_count": 2,
+            "spot_1_x": 50,
+            "spot_1_y": 50,
+            "spot_1_product": "",
+            "spot_2_x": 60,
+            "spot_2_y": 60,
+            "spot_2_product": "",
+            "spot_3_x": 40,
+            "spot_3_y": 40,
+            "spot_3_product": "",
+            "spot_4_x": 70,
+            "spot_4_y": 30,
+            "spot_4_product": "",
+            "spot_5_x": 30,
+            "spot_5_y": 70,
+            "spot_5_product": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_GX6YhT",
+        "slide_kEjqKX",
+        "slide_8gbqw9",
+        "slide_ffGMRr"
+      ],
+      "name": "Image SpotOn",
+      "settings": {
+        "title": "Shop the look",
+        "heading_size": "h1",
+        "full_width": true,
+        "image_height_mobile": 420,
+        "image_height_desktop": 560,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -384,6 +505,8 @@
     "product_properties_ngR8AK",
     "gender_product_hero_W9eQPf",
     "our_story_gcKCCa",
-    "our_story_nWFwyJ"
+    "our_story_nWFwyJ",
+    "products_variants_slider_8z39hG",
+    "image_embedded_products_yHALDH"
   ]
 }
