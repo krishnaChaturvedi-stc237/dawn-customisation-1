@@ -1,0 +1,32 @@
+{% comment %}
+  Custom product card for AJAX add-to-cart
+  Used inside image-embedded-products section
+{% endcomment %}
+
+<div
+  class="card-product-custom"
+  data-product-card
+  data-product-id="{{ product.id }}"
+>
+  <h3 class="card-product-custom__title">
+    {{ product.title }}
+  </h3>
+
+  {% render 'price', product: product %}
+
+  <button
+    type="button"
+    class="button button--primary card-product-custom__atc"
+    data-add-to-cart
+    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+    {% unless product.available %}
+      disabled
+    {% endunless %}
+  >
+    {% if product.available %}
+      Add to cart
+    {% else %}
+      Sold out
+    {% endif %}
+  </button>
+</div>

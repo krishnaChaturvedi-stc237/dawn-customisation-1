@@ -4,6 +4,11 @@
 {{ 'section-image-embedded-products.css' | asset_url | stylesheet_tag }}
 
 <script src="{{ 'section-image-embedded-products.js' | asset_url }}" defer="defer"></script>
+{{ 'card-product-custom.css' | asset_url | stylesheet_tag }}
+<script
+  src="{{ 'card-product-custom.js' | asset_url }}"
+  defer
+></script>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -147,7 +152,7 @@
                         <span class="svg-wrapper">{{ 'icon-close.svg' | inline_asset_content }}</span>
                       </button>
 
-                      {% render 'card-product',
+                      {% comment %} {% render 'card-product',
                         card_product: linked_product,
                         media_aspect_ratio: 'square',
                         lazy_load: true,
@@ -157,7 +162,10 @@
                         skip_styles: skip_card_product_styles,
                         section_id: section.id,
                         horizontal_class: true
-                      %}
+                        quick_add: 'standard'
+                      %} {% endcomment %}
+
+                      {% render 'card-product-custom', product: linked_product %}
 
                       {%- assign skip_card_product_styles = true -%}
                     </div>

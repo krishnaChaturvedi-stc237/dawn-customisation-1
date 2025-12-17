@@ -1,0 +1,14 @@
+.card-product-custom {
+  padding: 1rem;
+  background: rgb(var(--color-background));
+}
+
+.card-product-custom__title {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-product-custom__atc {
+  margin-top: 0.75rem;
+  width: 100%;
+}

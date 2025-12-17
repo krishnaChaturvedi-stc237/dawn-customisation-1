@@ -19,7 +19,6 @@
   function showCard(slide, idToShow, clickedButton) {
     hideAllCardsInSlide(slide);
     const mySelectorId=`#${CSS.escape(idToShow)}`
-    console.log("mySelector:",mySelectorId,"slide:",slide)
     const card = slide.querySelector(mySelectorId);
     if (!card) return;
 
