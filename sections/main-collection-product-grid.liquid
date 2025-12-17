@@ -10,6 +10,10 @@
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
 
+{%- if section.settings.show_infinite_scrolling == true -%}
+  <script src="{{'infinite-scrolling-collections.js' | asset_url }}" defer="defer" ></script>
+{%-endif-%}
+
 {%- if section.settings.quick_add == 'standard' -%}
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -181,10 +185,15 @@
                 {%- assign skip_card_product_styles = true -%}
               {%- endfor -%}
             </ul>
-
-            {%- if paginate.pages > 1 -%}
+            <h1>{{paginate.next.url}}</h1>
+            {%- if paginate.pages > 1 and section.settings.show_infinite_scrolling==false -%}
               {% render 'pagination', paginate: paginate, anchor: '' %}
             {%- endif -%}
+            {%if section.settings.show_infinite_scrolling==true and paginate.next %}
+              <div id="InfiniteScrollSentinel" data-next-page="{{ paginate.next.url }}"></div>
+            {%- endif -%}
+            {% comment %} <div id="InfiniteScrollSentinel" data-next-page="{{ paginate.next.url }}"></div> {% endcomment %}
+
           </div>
         {%- endif -%}
       </div>
@@ -316,6 +325,12 @@
       "id": "show_vendor",
       "default": false,
       "label": "t:sections.main-collection-product-grid.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_infinite_scrolling",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_infinite_scrolling.label"
     },
     {
       "type": "checkbox",

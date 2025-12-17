@@ -1808,6 +1808,9 @@
         "show_vendor": {
           "label": "Vendor"
         },
+        "show_infinite_scrolling": {
+          "label": "Show Infinite scrolling"
+        },
         "show_rating": {
           "label": "Product rating",
           "info": "An app is required for product ratings. [Learn more](https://help.shopify.com/manual/online-store/themes/theme-structure/page-types/collection-pages#product-grid-show-product-rating)"
