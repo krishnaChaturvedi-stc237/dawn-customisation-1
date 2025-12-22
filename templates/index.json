@@ -155,22 +155,49 @@
     "gender_product_hero_W9eQPf": {
       "type": "gender-product-hero",
       "blocks": {
+        "product_card_8TeCF9": {
+          "type": "product_card",
+          "settings": {
+            "product": "atmos-helmet",
+            "gender": "women",
+            "description": "Radiance Serum",
+            "color_scheme": "scheme-d6dd1fe2-d3e8-450e-b00a-d26b050a9b3d"
+          }
+        },
+        "product_card_QGxiVY": {
+          "type": "product_card",
+          "settings": {
+            "product": "neff-amy-beanie-2015",
+            "gender": "women",
+            "description": "Radiance Serum",
+            "color_scheme": "scheme-d6dd1fe2-d3e8-450e-b00a-d26b050a9b3d"
+          }
+        },
+        "product_card_XUiTz9": {
+          "type": "product_card",
+          "settings": {
+            "product": "rossignol-pursuit-16-ti-mens-skis-axl-3-120-tpx-bindings-2015",
+            "gender": "men",
+            "description": "Radiance Serum",
+            "color_scheme": "scheme-d6dd1fe2-d3e8-450e-b00a-d26b050a9b3d"
+          }
+        },
         "product_card_FxWtBp": {
           "type": "product_card",
           "settings": {
             "product": "k2-80x-mens-skis-m3-12-tc-bindings-2015",
             "gender": "men",
             "description": "Radiance Serum",
-            "color_scheme": "scheme-1"
+            "color_scheme": "scheme-d6dd1fe2-d3e8-450e-b00a-d26b050a9b3d"
           }
         },
         "product_card_ALDLV3": {
           "type": "product_card",
           "settings": {
-            "product": "",
-            "gender": "women",
+            "product": "4mm-5mm-6mm-balldriver-y-wrench",
+            "gender": "men",
             "description": "Radiance Serum",
-            "color_scheme": ""
+            "color_scheme": "scheme-d6dd1fe2-d3e8-450e-b00a-d26b050a9b3d"
           }
         },
         "product_card_JkQ89B": {
@@ -185,10 +212,10 @@
         "product_card_zVH4Hq": {
           "type": "product_card",
           "settings": {
-            "product": "",
+            "product": "acs-crossfire-chain",
             "gender": "men",
             "description": "Radiance Serum",
-            "color_scheme": ""
+            "color_scheme": "scheme-d6dd1fe2-d3e8-450e-b00a-d26b050a9b3d"
           }
         },
         "product_card_nhCecQ": {
@@ -197,20 +224,23 @@
             "product": "the-alfa",
             "gender": "women",
             "description": "Radiance Serum",
-            "color_scheme": "scheme-1"
+            "color_scheme": "scheme-d6dd1fe2-d3e8-450e-b00a-d26b050a9b3d"
           }
         },
         "product_card_8yecey": {
           "type": "product_card",
           "settings": {
-            "product": "",
+            "product": "650c-micro-wheelset",
             "gender": "men",
             "description": "Radiance Serum",
-            "color_scheme": ""
+            "color_scheme": "scheme-d6dd1fe2-d3e8-450e-b00a-d26b050a9b3d"
           }
         }
       },
       "block_order": [
+        "product_card_8TeCF9",
+        "product_card_QGxiVY",
+        "product_card_XUiTz9",
         "product_card_FxWtBp",
         "product_card_ALDLV3",
         "product_card_JkQ89B",
@@ -285,80 +315,6 @@
         "bottom_icon_34wjqJ",
         "bottom_icon_ycBiDG",
         "bottom_icon_qERDXB"
-      ],
-      "name": "Our story",
-      "settings": {
-        "heading": "Know Our Story",
-        "text": "<p>Use this section to tell customers about your brand story, values and what makes you unique.</p>",
-        "button_label": "Read more",
-        "button_link": "shopify://pages/about-us",
-        "video": "shopify://files/videos/0_Christmas_Fireplace_3840x2160.mp4",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "cover_image": "shopify://shop_images/image_33.png",
-        "video_description": "Brand story video",
-        "enable_video_looping": false,
-        "video_max_height": 460,
-        "color_scheme": "scheme-2",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
-    "our_story_nWFwyJ": {
-      "type": "OurStory",
-      "blocks": {
-        "highlight_wTxpDK": {
-          "type": "highlight",
-          "settings": {
-            "title": "Quality",
-            "text": "Describe one of your key brand pillars, such as quality, sustainability or innovation."
-          }
-        },
-        "highlight_Xyarpw": {
-          "type": "highlight",
-          "settings": {
-            "title": "Quality",
-            "text": "Describe one of your key brand pillars, such as quality, sustainability or innovation."
-          }
-        },
-        "highlight_ra7Q73": {
-          "type": "highlight",
-          "settings": {
-            "title": "Quality",
-            "text": "Describe one of your key brand pillars, such as quality, sustainability or innovation."
-          }
-        },
-        "bottom_icon_RJpFjk": {
-          "type": "bottom_icon",
-          "settings": {
-            "icon": "shopify://shop_images/cube.png",
-            "title": "Discreet Packaging",
-            "text": "Short reassuring message about this benefit."
-          }
-        },
-        "bottom_icon_T3rE8z": {
-          "type": "bottom_icon",
-          "settings": {
-            "icon": "shopify://shop_images/arrow_back_left_icon_123728_1.png",
-            "title": "Discreet Packaging",
-            "text": "Short reassuring message about this benefit."
-          }
-        },
-        "bottom_icon_cJQAiq": {
-          "type": "bottom_icon",
-          "settings": {
-            "icon": "shopify://shop_images/secure-payment.png",
-            "title": "Discreet Packaging",
-            "text": "Short reassuring message about this benefit."
-          }
-        }
-      },
-      "block_order": [
-        "highlight_wTxpDK",
-        "highlight_Xyarpw",
-        "highlight_ra7Q73",
-        "bottom_icon_RJpFjk",
-        "bottom_icon_T3rE8z",
-        "bottom_icon_cJQAiq"
       ],
       "name": "Our story",
       "settings": {
@@ -483,7 +439,6 @@
     "product_properties_ngR8AK",
     "gender_product_hero_W9eQPf",
     "our_story_gcKCCa",
-    "our_story_nWFwyJ",
     "products_variants_slider_8z39hG",
     "image_embedded_products_yHALDH"
   ]
