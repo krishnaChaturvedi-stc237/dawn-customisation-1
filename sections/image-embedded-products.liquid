@@ -113,7 +113,8 @@
                     <button
                       type="button"
                       class="image-embedded-products__hotspot"
-                      style="left: {{ block.settings[x_key] }}%; top: {{ block.settings[y_key] }}%;"
+                      data-hotspot-x="{{ block.settings[x_key] }}"
+                      data-hotspot-y="{{ block.settings[y_key] }}"
                       aria-controls="{{ card_id }}"
                       aria-expanded="false"
                       data-hotspot-button

@@ -83,7 +83,7 @@
 }
 
 .image-embedded-products__product-card {
-  position: relative;
+  position: absolute;
   width: min(34rem, calc(100vw - 3rem));
 
   /* Floating panel styling */
@@ -93,6 +93,8 @@
   border: 1px solid rgba(var(--color-foreground), 0.12);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
   backdrop-filter: blur(6px);
+  bottom: 20px;
+  left: 20px;
 }
 
 /* Remove the "double border" look: use panel border instead of card border */

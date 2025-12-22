@@ -1,3 +1,5 @@
+<script src="{{ 'counter-custom-element.js' | asset_url }}" defer="defer"></script>
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -28,6 +30,13 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .product-properties-{{ section.id }}__scroll::-webkit-scrollbar {
+    height: 0; /* hide horizontal scrollbar for WebKit */
+    display: none;
   }
 
   .product-properties-{{ section.id }}__list {
@@ -56,10 +65,28 @@
     margin: 0;
     font-size: 1.4rem;
   }
+  counter-box {
+    --counter-bg: #f9fafb;
+    --counter-border: #d1d5db;
+  }
 
   @media screen and (min-width: 990px) {
     .product-properties-{{ section.id }}__list {
       justify-content: space-between;
+    }
+  }
+
+  /* Small / tablet screens: enable horizontal scrolling (hidden scrollbar) and left-align items */
+  @media screen and (max-width: 989px) {
+    .product-properties-{{ section.id }}__list {
+      min-width: auto; /* allow list to size to content */
+      justify-content: flex-start;
+      gap: 1.5rem;
+      padding: 1rem 1rem 0.5rem;
+    }
+
+    .product-properties-{{ section.id }}__item {
+      scroll-snap-align: start;
     }
   }
 {%- endstyle -%}
@@ -99,10 +126,30 @@
           </ul>
         </div>
       {%- endif -%}
+      {% comment %} <counter-box id="counter-1" start="5" step="2" variant="compact">
+        <h3 slot="title" >Counter1</h3>
+        <p slot="description" >Counter will start from 5</p>
+      </counter-box>
+      <counter-box start="5" step="2" variant="compact">
+        <h3 slot="title" >Counter2</h3>
+        <p slot="description" >Counter will start from 5</p>
+      </counter-box>
+      <counter-box start="5" step="2" variant="compact">
+        <h3 slot="title" >Counter3</h3>
+        <p slot="description" >Counter will start from 5</p>
+      </counter-box>
+      <h3>Hello</h3> {% endcomment %}
     </div>
   </div>
 </div>
 
+<script>
+  {
+    document.querySelector('#counter-1').addEventListener('count-change',(e)=>{
+      console.log('Counter is changing',e.detail.value)
+    })
+  }
+</script>
 {% schema %}
 {
   "name": "Product properties",

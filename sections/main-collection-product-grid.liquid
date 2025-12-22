@@ -11,8 +11,8 @@
 {%- endunless -%}
 
 {%- if section.settings.show_infinite_scrolling == true -%}
-  <script src="{{'infinite-scrolling-collections.js' | asset_url }}" defer="defer" ></script>
-{%-endif-%}
+  <script src="{{'infinite-scrolling-collections.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 {%- if section.settings.quick_add == 'standard' -%}
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
@@ -185,15 +185,20 @@
                 {%- assign skip_card_product_styles = true -%}
               {%- endfor -%}
             </ul>
-            <h1>{{paginate.next.url}}</h1>
-            {%- if paginate.pages > 1 and section.settings.show_infinite_scrolling==false -%}
+            {%- if paginate.next -%}
+              <link
+                rel="next"
+                href="{{ paginate.next.url }}"
+                data-next-page
+              >
+            {%- endif -%}
+            <h1>{{ paginate.next.url }}</h1>
+            {%- if paginate.pages > 1 and section.settings.show_infinite_scrolling == false -%}
               {% render 'pagination', paginate: paginate, anchor: '' %}
             {%- endif -%}
-            {%if section.settings.show_infinite_scrolling==true and paginate.next %}
-              <div id="InfiniteScrollSentinel" data-next-page="{{ paginate.next.url }}"></div>
+            {% if section.settings.show_infinite_scrolling == true and paginate.next %}
+              <div id="InfiniteScrollSentinel" data-next-page="{{ paginate.next.url }}">Hi</div>
             {%- endif -%}
-            {% comment %} <div id="InfiniteScrollSentinel" data-next-page="{{ paginate.next.url }}"></div> {% endcomment %}
-
           </div>
         {%- endif -%}
       </div>
@@ -242,7 +247,7 @@
           "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__2.label"
         }
       ]
-    },    
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",

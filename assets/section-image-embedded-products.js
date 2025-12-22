@@ -76,6 +76,39 @@
       hideAllCardsInSlide(slide);
       openDefaultCard(slide);
     });
+
+    // Position hotspots based on image display size so positions remain fixed
+    function positionHotspotsInSlide(slide) {
+      const media = slide.querySelector('.image-embedded-products__media');
+      const img = slide.querySelector('.image-embedded-products__image');
+      if (!media || !img) return;
+
+      const mediaRect = media.getBoundingClientRect();
+      const width = media.clientWidth;
+      const height = media.clientHeight;
+
+      slide.querySelectorAll(SELECTORS.hotspotButton).forEach((btn) => {
+        const x = parseFloat(btn.getAttribute('data-hotspot-x')) || 0;
+        const y = parseFloat(btn.getAttribute('data-hotspot-y')) || 0;
+        // compute pixel coordinates relative to media element
+        const leftPx = (x / 110) * width;
+        const topPx = (y / 100) * height;
+        btn.style.left = `${leftPx}px`;
+        btn.style.top = `${topPx}px`;
+      });
+    }
+
+    // position hotspots for all slides initially
+    sectionEl.querySelectorAll(SELECTORS.slide).forEach(positionHotspotsInSlide);
+
+    // reposition on resize (debounced)
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        sectionEl.querySelectorAll(SELECTORS.slide).forEach(positionHotspotsInSlide);
+      }, 100);
+    });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
