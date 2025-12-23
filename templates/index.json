@@ -392,33 +392,11 @@
             "spot_5_y": 70,
             "spot_5_product": ""
           }
-        },
-        "slide_ffGMRr": {
-          "type": "slide",
-          "settings": {
-            "spots_count": 2,
-            "spot_1_x": 50,
-            "spot_1_y": 50,
-            "spot_1_product": "",
-            "spot_2_x": 60,
-            "spot_2_y": 60,
-            "spot_2_product": "",
-            "spot_3_x": 40,
-            "spot_3_y": 40,
-            "spot_3_product": "",
-            "spot_4_x": 70,
-            "spot_4_y": 30,
-            "spot_4_product": "",
-            "spot_5_x": 30,
-            "spot_5_y": 70,
-            "spot_5_product": ""
-          }
         }
       },
       "block_order": [
         "slide_GX6YhT",
-        "slide_8gbqw9",
-        "slide_ffGMRr"
+        "slide_8gbqw9"
       ],
       "name": "Image SpotOn",
       "settings": {
